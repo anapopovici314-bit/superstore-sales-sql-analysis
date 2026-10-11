@@ -80,7 +80,7 @@ WITH RankedCustomers AS (
         ROUND(SUM(Sales), 2) AS Total_Sales,
         ROW_NUMBER() OVER (PARTITION BY Region ORDER BY SUM(Sales) DESC) AS rank_num
     FROM 
-        `numele_proiectului.nume_dataset.superstore_final_dataset`
+        `tidy-elf-498016-j2.Sales_dataset.sales`
     GROUP BY 
         Region, Customer_ID, Customer_Name
 )
