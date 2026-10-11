@@ -17,16 +17,7 @@ This project demonstrates an end-to-end data analytics workflow using an **E-Com
    * Inspected dataset for structural consistency and handled date formatting.
    * Standardized text formats and ensured numeric fields (Sales, Profit) were properly recognized.
    * Handled missing attributes and enriched data fields for advanced calculations.
-```sql
-SELECT 
-    Category,
-    ROUND(SUM(Sales), 2) AS Total_Sales
-FROM 
-    `numele_proiectului.nume_dataset.superstore_final_dataset`
-GROUP BY 
-    Category
-ORDER BY 
-    Total_Sales DESC;
+---
 
 2. **Data Warehousing & Querying (BigQuery):**
    * Imported the cleaned dataset into BigQuery.
