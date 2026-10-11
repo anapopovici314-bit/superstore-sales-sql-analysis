@@ -97,10 +97,3 @@ ORDER BY
     Region, rank_num;
 ```
 
----
-
-## 📂 Repository Structure
-```text
-├── data/                  # Cleaned dataset sample or references
-├── sql/                   # SQL scripts containing all analytical queries
-└── README.md              # Project documentation
