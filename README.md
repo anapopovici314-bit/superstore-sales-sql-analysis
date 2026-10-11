@@ -28,9 +28,20 @@ This project demonstrates an end-to-end data analytics workflow using an **E-Com
 ## 📊 SQL Analysis & Key Insights
 The following analytical queries were implemented in BigQuery (`queries.sql`):
 1. **Top Product Categories:** Identified the best-performing product categories by total sales.
-2. **Regional Sales & Orders Performance:** Evaluated total revenue and order volume across different geographical regions.
-3. **Customer Loyalty Analysis:** Ranked customers based on their purchase frequency and total spending behavior.
-4. **Advanced Customer Segmentation (Window Functions & CTEs):** Utilized `ROW_NUMBER()` and `PARTITION BY` clauses within a Common Table Expression (CTE) to isolate the **Top 3 customers per region** based on sales volume.
+   ```sql
+SELECT 
+    Category,
+    ROUND(SUM(Sales), 2) AS Total_Sales
+FROM 
+    `numele_proiectului.nume_dataset.superstore_final_dataset`
+GROUP BY 
+    Category
+ORDER BY 
+    Total_Sales DESC;
+
+3. **Regional Sales & Orders Performance:** Evaluated total revenue and order volume across different geographical regions.
+4. **Customer Loyalty Analysis:** Ranked customers based on their purchase frequency and total spending behavior.
+5. **Advanced Customer Segmentation (Window Functions & CTEs):** Utilized `ROW_NUMBER()` and `PARTITION BY` clauses within a Common Table Expression (CTE) to isolate the **Top 3 customers per region** based on sales volume.
 
 ---
 
