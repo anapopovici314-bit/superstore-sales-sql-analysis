@@ -38,6 +38,7 @@ GROUP BY
     Category
 ORDER BY 
     Total_Sales DESC;
+    ```
 
 3. **Regional Sales & Orders Performance:** Evaluated total revenue and order volume across different geographical regions.
 4. **Customer Loyalty Analysis:** Ranked customers based on their purchase frequency and total spending behavior.
