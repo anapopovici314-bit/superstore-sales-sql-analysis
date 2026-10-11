@@ -40,9 +40,62 @@ ORDER BY
     Total_Sales DESC;
 ```
 
-3. **Regional Sales & Orders Performance:** Evaluated total revenue and order volume across different geographical regions.
-4. **Customer Loyalty Analysis:** Ranked customers based on their purchase frequency and total spending behavior.
-5. **Advanced Customer Segmentation (Window Functions & CTEs):** Utilized `ROW_NUMBER()` and `PARTITION BY` clauses within a Common Table Expression (CTE) to isolate the **Top 3 customers per region** based on sales volume.
+2. **Regional Sales & Orders Performance:** Evaluated total revenue and order volume across different geographical regions.
+```sql
+SELECT 
+    Region,
+    COUNT(DISTINCT Order_ID) AS Total_Orders,
+    ROUND(SUM(Sales), 2) AS Total_Sales
+FROM 
+    `tidy-elf-498016-j2.Sales_dataset.sales`
+GROUP BY 
+    Region
+ORDER BY 
+    Total_Sales DESC;
+```
+
+3. **Customer Loyalty Analysis:** Ranked customers based on their purchase frequency and total spending behavior.
+```sql
+SELECT 
+    Customer_ID,
+    Customer_Name,
+    Segment,
+    COUNT(DISTINCT Order_ID) AS Total_Orders
+FROM 
+    `tidy-elf-498016-j2.Sales_dataset.sales`
+GROUP BY 
+    Customer_ID, Customer_Name, Segment
+ORDER BY 
+    Total_Orders DESC
+LIMIT 5;
+```
+
+4. **Advanced Customer Segmentation (Window Functions & CTEs):** Utilized `ROW_NUMBER()` and `PARTITION BY` clauses within a Common Table Expression (CTE) to isolate the **Top 3 customers per region** based on sales volume.
+```sql
+WITH RankedCustomers AS (
+    SELECT 
+        Region,
+        Customer_ID,
+        Customer_Name,
+        ROUND(SUM(Sales), 2) AS Total_Sales,
+        ROW_NUMBER() OVER (PARTITION BY Region ORDER BY SUM(Sales) DESC) AS rank_num
+    FROM 
+        `numele_proiectului.nume_dataset.superstore_final_dataset`
+    GROUP BY 
+        Region, Customer_ID, Customer_Name
+)
+SELECT 
+    Region,
+    Customer_Name,
+    Total_Sales,
+    rank_num
+FROM 
+    RankedCustomers
+WHERE 
+    rank_num <= 3
+ORDER BY 
+    Region, rank_num;
+```
 
 ---
 
