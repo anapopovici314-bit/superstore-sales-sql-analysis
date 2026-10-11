@@ -96,4 +96,8 @@ WHERE
 ORDER BY 
     Region, rank_num;
 ```
+---
+
+## 📈 Power BI Dashboard Preview
+![Dashboard Preview](ds1.png)
 
