@@ -28,7 +28,7 @@ This project demonstrates an end-to-end data analytics workflow using an **E-Com
 ## 📊 SQL Analysis & Key Insights
 The following analytical queries were implemented in BigQuery (`queries.sql`):
 1. **Top Product Categories:** Identified the best-performing product categories by total sales.
-   ```sql
+```sql
 SELECT 
     Category,
     ROUND(SUM(Sales), 2) AS Total_Sales
@@ -38,7 +38,7 @@ GROUP BY
     Category
 ORDER BY 
     Total_Sales DESC;
-    ```
+```
 
 3. **Regional Sales & Orders Performance:** Evaluated total revenue and order volume across different geographical regions.
 4. **Customer Loyalty Analysis:** Ranked customers based on their purchase frequency and total spending behavior.
