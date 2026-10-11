@@ -33,7 +33,7 @@ SELECT
     Category,
     ROUND(SUM(Sales), 2) AS Total_Sales
 FROM 
-    `numele_proiectului.nume_dataset.superstore_final_dataset`
+    `tidy-elf-498016-j2.Sales_dataset.sales`
 GROUP BY 
     Category
 ORDER BY 
